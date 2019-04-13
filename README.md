@@ -21,7 +21,7 @@
 - [CS 287: Advanced Robotics, Fall 2015（Peter Abeel,强化学习和机器人](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa15/#syllabus)
 - [CS294-前言，模仿学习，机器人背景相关](http://rail.eecs.berkeley.edu/deeprlcourse/)
 
-##open source
+## open source
 
 - [open_ai](https://openai.com/progress/)
 - [pybullet](https://pybullet.org/wordpress/)
