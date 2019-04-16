@@ -1,10 +1,12 @@
 ## blog
 
 - [ ] [莫烦-rl-python](https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/)
+     [github_code](https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow)
 - [ ] [CSDN-openai concepts](https://blog.csdn.net/p312011150/article/details/80826704)
 - [ ] [知乎-张楚珩-强化学习算法论文](https://zhuanlan.zhihu.com/p/46600521)
 - [ ] [simoninithomas/Deep_reinforcement_learning_Course](https://github.com/simoninithomas/Deep_reinforcement_learning_Course)
 - [ ] [刘建平](https://www.cnblogs.com/pinard/category/1254674.html)
+    - [github_rl_code](https://github.com/ljpzzz/machinelearning/tree/master/reinforcement-learning)
 - [andri27-ts/60_Days_RL_Challenge](https://github.com/andri27-ts/60_Days_RL_Challenge)
 - [metalbubble/RLexample](https://github.com/metalbubble/RLexample)
 
