@@ -1,7 +1,20 @@
+## notes
+
+- [Qlearning](rl/q_learning.md)
+- [DQN](rl/dqn.md)
+- [RL](rl/rl.md)
+
+## code
+
+ - [qlearning_frozenlake](rl/qlearning_frozenlake)
+ - [dqn_cart](rl/dqn_cart.py)
+
 ## blog
 
 - [ ] [莫烦-rl-python](https://morvanzhou.github.io/tutorials/machine-learning/reinforcement-learning/)
-    - [github_code](https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow)
+    - [github_code_rl](https://github.com/MorvanZhou/Reinforcement-learning-with-tensorflow)
+    - [rl_in_manipulator](https://morvanzhou.github.io/tutorials/machine-learning/ML-practice/RL-build-arm-from-scratch1/)
+
 - [ ] [CSDN-openai concepts](https://blog.csdn.net/p312011150/article/details/80826704)
 - [ ] [知乎-张楚珩-强化学习算法论文](https://zhuanlan.zhihu.com/p/46600521)
 - [ ] [simoninithomas/Deep_reinforcement_learning_Course](https://github.com/simoninithomas/Deep_reinforcement_learning_Course)
