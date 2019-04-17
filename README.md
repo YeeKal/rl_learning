@@ -1,12 +1,12 @@
 ## notes
 
-- [Qlearning](rl/q_learning.md)
-- [DQN](rl/dqn.md)
-- [RL](rl/rl.md)
+- [Qlearning](q_learning.md)
+- [DQN](dqn.md)
+- [RL](rl.md)
 
 ## code
 
- - [qlearning_frozenlake](rl/qlearning_frozenlake)
+ - [qlearning_frozenlake](rl/qlearning_frozenlake.py)
  - [dqn_cart](rl/dqn_cart.py)
 
 ## blog
