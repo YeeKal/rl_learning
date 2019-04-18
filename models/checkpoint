@@ -1,0 +1,2 @@
+model_checkpoint_path: "nature_dqn_cart.ckpt"
+all_model_checkpoint_paths: "nature_dqn_cart.ckpt"

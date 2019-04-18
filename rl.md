@@ -1,4 +1,5 @@
 ## Reinforcement Learning
+[deep rl tutorial in icml 2016](https://icml.cc/2016/tutorials/deep_rl_tutorial.pdf)
 
 相比与监督学习，强化学习没有训练数据的输出值，但是有奖励值； 相比与无监督学习，除了训练数据还有奖励规则。
 
@@ -13,9 +14,17 @@
 4. $\pi$: policy,策略，即在某一状态下如何选择动作，常以条件概率表示为$\pi(a/s)=P(A_t=a|S_t=s)$，即在状态s时采取动作a的概率
 5. v: value, 在策略$\pi$和状态s下，进入下一个状态后的价值，又被称为值函数，表示为$v_\pi(s)$. 事实上值函数代表当前状态的价值，而是否能达到目的还跟未来的状态有关，故当前值函数也跟未来状态的值函数有关:
 $$v_\pi(s)=\mathbf{E}_\pi(R_{t+1}+\gamma R_{t+2}+\cdots| S_t=s)$$
-6. $\gamma$: reward decay rate, 如果为0，则是贪婪法，即价值只由当前延时奖励决定，如果是1，则所有的后续状态奖励和当前奖励一视同仁。大多数时候，我们会取一个0到1之间的数字，即当前延时奖励的权重比后续奖励的权重大
+6. $\gamma$: discount rate(reward decay rate), 如果为0，则是贪婪法，即价值只由当前延时奖励决定，如果是1，则所有的后续状态奖励和当前奖励一视同仁。大多数时候，我们会取一个0到1之间的数字，即当前延时奖励的权重比后续奖励的权重大
 7. $P^a_{ss'}$: 状态转化模型，在当前状态s采取动作a后撞到下一个状态s‘的概率，虽然大部分问题的的状态转化模型为1.
 8. $\epsilon$: exploration rate
+
+approaches to reinforcement learning: Using deep networks to represent value, policy, model
+
+- valued-based
+    - Q-learning
+    - DQN
+- policy-based
+- model-based
 
 ## Markov Decision Process
 

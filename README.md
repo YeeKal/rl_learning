@@ -22,6 +22,7 @@
     - [github_rl_code](https://github.com/ljpzzz/machinelearning/tree/master/reinforcement-learning)
 - [andri27-ts/60_Days_RL_Challenge](https://github.com/andri27-ts/60_Days_RL_Challenge)
 - [metalbubble/RLexample](https://github.com/metalbubble/RLexample)
+- [分布式强化学习框架](https://daiwk.github.io/posts/rl-distributed-rl.html)
 
 
 

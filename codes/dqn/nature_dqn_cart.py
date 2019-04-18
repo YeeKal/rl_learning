@@ -7,7 +7,7 @@
 # declaration at the top                                              #
 #######################################################################
 '''
-@2019_04_16
+@2019_04_17
 - add reward plot
 - add twnsorflow session saver 
 '''
@@ -26,6 +26,7 @@ INITIAL_EPSILON = 0.5 # starting value of epsilon
 FINAL_EPSILON = 0.01 # final value of epsilon
 REPLAY_SIZE = 10000 # experience replay buffer size
 BATCH_SIZE = 32 # size of minibatch
+REPLACE_TARGET_FREQ = 10 # frequency to update target Q network
 
 plt.ion()
 
@@ -59,21 +60,44 @@ class DQN():
 		self.session.run(tf.global_variables_initializer())
 
 		self.saver=tf.train.Saver()
-		self.model_path="models/dqn_cart.ckpt"
+		self.model_path="models/nature_dqn_cart.ckpt"
 		self.reward=[]
 
 	def create_Q_network(self):
+		self.state_input = tf.placeholder("float", [None, self.state_dim])
 		# network weights
-		W1 = self.weight_variable([self.state_dim,20])
-		b1 = self.bias_variable([20])
-		W2 = self.weight_variable([20,self.action_dim])
-		b2 = self.bias_variable([self.action_dim])
-		# input layer
-		self.state_input = tf.placeholder("float",[None,self.state_dim])
-		# hidden layers
-		h_layer = tf.nn.relu(tf.matmul(self.state_input,W1) + b1)
-		# Q Value layer
-		self.Q_value = tf.matmul(h_layer,W2) + b2
+		with tf.variable_scope('current_net'):
+			W1 = self.weight_variable([self.state_dim,20])
+			b1 = self.bias_variable([20])
+			W2 = self.weight_variable([20,self.action_dim])
+			b2 = self.bias_variable([self.action_dim])
+
+			# hidden layers
+			h_layer = tf.nn.relu(tf.matmul(self.state_input,W1) + b1)
+			# Q Value layer
+			self.Q_value = tf.matmul(h_layer,W2) + b2
+
+		with tf.variable_scope('target_net'):
+			W1t = self.weight_variable([self.state_dim,20])
+			b1t = self.bias_variable([20])
+			W2t = self.weight_variable([20,self.action_dim])
+			b2t = self.bias_variable([self.action_dim])
+
+			# hidden layers
+			h_layer_t = tf.nn.relu(tf.matmul(self.state_input,W1t) + b1t)
+			# Q Value layer
+			self.target_Q_value = tf.matmul(h_layer,W2t) + b2t
+
+		t_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='target_net')
+		e_params = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='current_net')
+
+		with tf.variable_scope('soft_replacement'):
+			self.target_replace_op = [tf.assign(t, e) for t, e in zip(t_params, e_params)]
+	def update_target_q_network(self, episode):
+		# update target Q netowrk
+		if episode % REPLACE_TARGET_FREQ == 0:
+			self.session.run(self.target_replace_op)
+			#print('episode '+str(episode) +', target Q network params replaced!')
 
 	def create_training_method(self):
 		self.action_input = tf.placeholder("float",[None,self.action_dim]) # one hot presentation
@@ -103,7 +127,8 @@ class DQN():
 
 		# Step 2: calculate y
 		y_batch = []
-		Q_value_batch = self.Q_value.eval(feed_dict={self.state_input:next_state_batch})
+		#Q_value_batch = self.Q_value.eval(feed_dict={self.state_input:next_state_batch})
+		Q_value_batch = self.target_Q_value.eval(feed_dict={self.state_input:next_state_batch})
 		for i in range(0,BATCH_SIZE):
 			done = minibatch[i][4]
 			if done:
@@ -150,7 +175,7 @@ class DQN():
 # ---------------------------------------------------------
 # Hyper Parameters
 ENV_NAME = 'CartPole-v0'
-EPISODE = 2500 # Episode limitation
+EPISODE = 1500 # Episode limitation
 STEP = 300 # Step limitation in an episode
 TEST = 10 # The number of experiment test every 100 episode
 
@@ -190,6 +215,7 @@ def train():
 			print ('episode: ',episode,'Evaluation Average Reward:',ave_reward)
 			#save
 			agent.save()
+			agent.update_target_q_network(episode)
 def test():
 	env = gym.make(ENV_NAME)
 	agent = DQN(env)
