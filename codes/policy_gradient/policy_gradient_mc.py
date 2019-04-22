@@ -43,7 +43,9 @@ class Policy_Gradient():
 
         # Init session
         self.session = tf.InteractiveSession()
+        tf.summary.FileWriter("logs/", self.session.graph)
         self.session.run(tf.global_variables_initializer())
+        
         self.reward=[]
 
     def create_softmax_network(self):
@@ -88,7 +90,7 @@ class Policy_Gradient():
         self.ep_rs.append(r)
 
     def learn(self):
-
+        ##normalize rewards
         discounted_ep_rs = np.zeros_like(self.ep_rs)
         running_add = 0
         for t in reversed(range(0, len(self.ep_rs))):

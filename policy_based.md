@@ -1,7 +1,13 @@
 ## policy gradient
+
+- On-policy: The agent learned and the agent interacting with the environment is the same.
+- Off-policy: The agent learned and the agent interacting with the environment is different
+
 **paper**
 
 - [policy_gradient](https://homes.cs.washington.edu/~todorov/courses/amath579/reading/PolicyGradient.pdf)
+- [dpg](https://link.zhihu.com/?target=http%3A//www.jmlr.org/proceedings/papers/v32/silver14.pdf)
+- [ddpg](https://link.zhihu.com/?target=http%3A//www.jmlr.org/proceedings/papers/v32/silver14.pdf)
 
 优势：  
     - 连续动作
@@ -27,18 +33,71 @@ the advantage of parameterizing policies according to the softmax in action pref
 
 $J(\theta)$: performance measure
 
-在这里神经网络的更新不是依靠误差，而是依靠奖励。梯度上升法最大化目标函数。
+在这里神经网络的更新不是依靠误差，而是依靠奖励。梯度上升法最大化目标函数。奖励值越大则占越大的比重。
 
 1. start value: 在一个完整的序列下，以初始状态的累计奖励值来衡量策略的优势. $V_{\pi_\theta}$ is the true value for $\pi_\theta$, the policy determined by $\theta$. In this discussion the discounting rate $\gamma$ is not included.
 $$J_1(\theta)=V_{\pi_\theta}(s_1)=E_{\pi_\theta}[v_1]$$
-2. average reward: 在连续环境条件下，不存在某个初始状态。把个体在某时刻下的状态看成各个状态概率分布，则把每一时刻得到的奖励按各状态的概率分布求和：
+2. average reward: 在连续环境条件下，不存在某个初始状态。把个体在某时data_path刻下的状态看成各个状态概率分布，则把每一时刻得到的奖励按各状态的概率分布求和：
 $$J_{avV}(\theta)=\sum_sd_{\pi_\theta}V_{\pi_\theta}(s)$$
 3. average reward per time-step: 每一时间步长下的平均奖励：
 $$J_{avR}(\theta)=\sum_sd_{\pi_\theta}(s)\sum_a\pi_\theta(s,a)R^a_s$$
 
-**optimization**
+**policy gradient theorem**
+
+$$\bigtriangledown J(\theta)\propto \sum_s d_{\pi_\theta}(s)\sum_{a}q_\pi(s,a)\bigtriangledown \pi(a|s,\theta)$$
+
+[公式推倒参考](https://www.jianshu.com/p/e9d47bb2dab2)
+
+
+## reinforce
+
+基于整个回合数据的方法，称为reinforce算法。这里基于Monte Carto进行采样。在梯度上升更新过程中，右乘的$v_t$是该动作的奖励值，奖励值的大小影响上升梯度中由该动作所造成的梯度。
+
+![reinforce](resources/reinforce.png)
+
+最大化$\log\pi_\theta(s,a)v$等效于最小化-$\log\pi_\theta(s,a)v$，故在tensorflow中的处理可以用交叉熵最小化loss：
+```python
+neg_log_prob = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=softmax_input_act, labels=tf_acts)
+loss = tf.reduce_mean(neg_log_prob *tf_vt)
+```
+tips:
+
+1. 对reward做正则化，以平均值作为基准偏差
+2. 引入discount rate
 
 ## actor-critic
 
+- 可以单步更新，不再需要完整序列，比传统policy gradient更快
+- 难以收敛
+
 learn approximations to both policy and value functions.
+
+- critic: 更新价值函数网络参数
+- actor: 更新策略函数网络参数
+
+for each step:
+1. initialize $w,\theta,s$
+2. a=$\phi(s)$, $r,s'$=env.step(a)
+3. $V(s)=Q(s),V'(s')=Q(s')$
+4. TD error: $\delta=R+\gamma V(s')-V(s)$
+5. train network:
+    - w:=w+$\delta^2$
+    - $\theta:=\theta+\bigtriangledown\log \pi_\theta(s,a)\delta$
+
+
+## A3C
+
+## DDPG: Deep Deterministic Policy Gradient
+
+参考DDQN，actor和critic分别建立两个网络进行更新和矫正。初始化s,由actor网络得出a, 根据env.step(a)得出新的s_和r. 首先根据r更新critic网络，然后根据critic建议的方向(q(s,a))去更新actor网络。
+
+![ddpg](resources/ddpg.png)
+
+critic的网络更新策略与DDQN类似，但是actor的更新策略看上去很复杂。但是Actor的损失可以简单的理解为得到的反馈Q值越大损失越小，得到的反馈Q值越小损失越大，因此只要对状态估计网络返回的Q值取个负号即可，即：
+$$J(\theta)=-\frac{1}{m}\sum_{j=1}^m Q(s,a,w)$$
+
+tips:
+- 对动作增加随机噪音：$A=\pi_theta(S)+N$
+- exponential moving average: 网络参数步进复制，$w'=\tau w+(1-\tau)w'$, $\theta=\tau \theta+(1-\tau)\theta'$
+
 

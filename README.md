@@ -23,6 +23,8 @@
 - [andri27-ts/60_Days_RL_Challenge](https://github.com/andri27-ts/60_Days_RL_Challenge)
 - [metalbubble/RLexample](https://github.com/metalbubble/RLexample)
 - [分布式强化学习框架](https://daiwk.github.io/posts/rl-distributed-rl.html)
+- [DQFD_GUTHUB](https://github.com/go2sea/DQfD)
+- [karpathy on pg](http://karpathy.github.io/2016/05/31/rl/)
 
 
 
