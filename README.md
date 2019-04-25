@@ -17,6 +17,7 @@
 
 - [ ] [CSDN-openai concepts](https://blog.csdn.net/p312011150/article/details/80826704)
 - [ ] [知乎-张楚珩-强化学习算法论文](https://zhuanlan.zhihu.com/p/46600521)
+- [ ] [知乎-强化学习知识大讲堂](https://zhuanlan.zhihu.com/sharerl)
 - [ ] [simoninithomas/Deep_reinforcement_learning_Course](https://github.com/simoninithomas/Deep_reinforcement_learning_Course)
 - [ ] [刘建平](https://www.cnblogs.com/pinard/category/1254674.html)
     - [github_rl_code](https://github.com/ljpzzz/machinelearning/tree/master/reinforcement-learning)
@@ -24,9 +25,9 @@
 - [metalbubble/RLexample](https://github.com/metalbubble/RLexample)
 - [分布式强化学习框架](https://daiwk.github.io/posts/rl-distributed-rl.html)
 - [DQFD_GUTHUB](https://github.com/go2sea/DQfD)
-- [karpathy on pg](http://karpathy.github.io/2016/05/31/rl/)
-
-
+- [深度强化学习的 18 个关键问题](https://www.jiqizhixin.com/articles/2017-12-22-20)
+- [DeepRLHacks](https://github.com/williamFalcon/DeepRLHacks)
+- [median ](https://medium.com/@jonathan_hui/rl-deep-reinforcement-learning-series-833319a95530)
 
 ## course
 
@@ -39,9 +40,14 @@
 - [CS 287: Advanced Robotics, Fall 2015（Peter Abeel,强化学习和机器人](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa15/#syllabus)
 - [CS294-前言，模仿学习，机器人背景相关](http://rail.eecs.berkeley.edu/deeprlcourse/)
 
+## people
+
+- [REZA MAKJOURIAN](https://www.cs.utexas.edu/~reza/)
+
 ## open source
 
 - [open_ai](https://openai.com/progress/)
 - [pybullet](https://pybullet.org/wordpress/)
 - [MuJoCo](http://www.mujoco.org/)
 - [reinforce_js](https://cs.stanford.edu/people/karpathy/reinforcejs/)
+- [chainerRl](https://github.com/chainer/chainerrl)
