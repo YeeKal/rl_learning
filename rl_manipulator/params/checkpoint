@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/yee/Documents/github/rl_learning/rl_manipulator/params/params"
+all_model_checkpoint_paths: "/home/yee/Documents/github/rl_learning/rl_manipulator/params/params"

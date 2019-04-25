@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 import gym
 import time
+import matplotlib.pyplot as plt
+import os
 
 LR_A = 0.001    # learning rate for actor
 LR_C = 0.001    # learning rate for critic
@@ -10,11 +12,25 @@ TAU = 0.01      # soft replacement
 MEMORY_CAPACITY = 30000
 BATCH_SIZE = 32
 
+
+##sys.path[0]: 被执行文件的目录
+##os.getcwd(): 当前执行目录
+##os.path.realpath(__file__): 本文件的绝对路径
+##os.path.split(os.path.realpath(__file__))[0]： 本文件的真实目录
+
+folder_path=os.path.split(os.path.realpath(__file__))[0]
+plt.ion()
+fig = plt.figure()
+ax = fig.add_subplot(111)
+hl, = ax.plot([], [])
+
 class DDPG(object):
+    
     def __init__(self,s_dim,a_dim,a_bound):
         # record s,s_,a,r
         self.memory = np.zeros((MEMORY_CAPACITY, s_dim * 2 + a_dim + 1), dtype=np.float32)
         self.pointer = 0
+        self.ep_reward=[]
         self.sess = tf.Session()
 
         self.a_dim, self.s_dim, self.a_bound = a_dim, s_dim, a_bound
@@ -53,11 +69,13 @@ class DDPG(object):
 
     def save(self):    
         saver = tf.train.Saver()
-        saver.save(self.sess, './params', write_meta_graph=False)
+        saver.save(self.sess, folder_path+'/params/params', write_meta_graph=False)
+        pic_name= time.strftime('%Y_%m_%d_%H_%M',time.localtime())+"reward.png"
+        plt.savefig(folder_path+'/params/'+pic_name)
 
     def restore(self):  
         saver = tf.train.Saver()
-        saver.restore(self.sess, './params')
+        saver.restore(self.sess, folder_path+'/params/params')
 
     def choose_action(self, s):
         s=s[np.newaxis,:]#[1,2,3,4] --->  [[1,2,3,4]]
@@ -101,3 +119,14 @@ class DDPG(object):
         if self.pointer>MEMORY_CAPACITY:
             return True
         return False
+    def store_epr(self,ep_reward):
+        self.ep_reward.append(ep_reward)
+    def plot(self):
+        episodes=len(self.ep_reward)
+        xdata=np.arange(episodes)
+        hl.set_xdata(xdata)
+        hl.set_ydata(self.ep_reward)
+        plt.xlim(0,episodes*1.1)
+        plt.ylim(self.ep_reward[np.argmin(self.ep_reward)]*1.1,self.ep_reward[np.argmax(self.ep_reward)]*1.1)
+        fig.canvas.draw()
+

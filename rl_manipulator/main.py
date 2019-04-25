@@ -12,7 +12,7 @@ import numpy as np
 import sys
 
 #global variables
-MAX_EPISODES=900
+MAX_EPISODES=1000
 MAX_STEPS=200
 TEST_STEPS=5
 
@@ -44,6 +44,8 @@ def train():
             if done or j == MAX_STEPS-1:
                 print('Episode:', episode, ' Reward: %f' % int(ep_reward),'Step:%d'%j )
                 break
+        rl.store_epr(ep_reward)
+        rl.plot()
     rl.save()
 
 def test():
@@ -62,12 +64,12 @@ if __name__ == '__main__':
     t1=time.time()
     if len(sys.argv)==1:
         train()
-        sys.exit(0)
-    command=sys.argv[1]
-    if command=='train':
-        train()
-    elif command=='test':
-        test()
+    else:
+        command=sys.argv[1]
+        if command=='train':
+            train()
+        elif command=='test':
+            test()
     print('Running time: ', time.time() - t1)
     input("any key to quit:")
 
@@ -86,5 +88,14 @@ solution:
 2. add features
 
 the scale of features should be in the same order of magnitudes
+'''
+
+'''
+@2019-04-25
+problem: oscillate on the target block
+analyse: 在边缘震荡也能获得较高的reward, 考虑1.增加运动的惩罚;2.增加连续的reward
+solution:
+    try 1: 抖动减弱，但依然存在。运动与距离相矛盾
+    try 2: 在reach_go之后才增加运动的惩罚,收敛快，抖动无法完全消除，不稳定
 '''
     

@@ -170,6 +170,9 @@ class TwoArms(object):
         r=-dist
         if reach:
             r +=1
+            #if reach, extra action will be punishment
+            if self.on_goal>0:
+                r+=-np.linalg.norm(action)
             self.on_goal+=1
             if self.on_goal>50:
                 done=True
