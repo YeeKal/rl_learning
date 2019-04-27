@@ -73,9 +73,6 @@ if __name__ == '__main__':
     print('Running time: ', time.time() - t1)
     input("any key to quit:")
 
-
-
-
 '''
 1. not converge
 2. not stop on goal
@@ -97,5 +94,8 @@ analyse: 在边缘震荡也能获得较高的reward, 考虑1.增加运动的惩�
 solution:
     try 1: 抖动减弱，但依然存在。运动与距离相矛盾
     try 2: 在reach_go之后才增加运动的惩罚,收敛快，抖动无法完全消除，不稳定
+@2019-04-26
+1. link2所转动的角度应该是theta1+theta2, 之前没有考虑到，所以抖动严重，改正之后，抖动缓解
+2. 增加obstacle
 '''
     

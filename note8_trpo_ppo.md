@@ -3,6 +3,7 @@
 [强化学习进阶-知乎](https://zhuanlan.zhihu.com/p/26308073)
 [RL — Trust Region Policy Optimization  ](https://medium.com/@jonathan_hui/rl-trust-region-policy-optimization-trpo-explained-a6ee04eeeee9)
 [RL — Trust Region Policy Optimization Part 2](https://medium.com/@jonathan_hui/rl-trust-region-policy-optimization-trpo-part-2-f51e3b2e373a)
+[推倒-知乎](https://zhuanlan.zhihu.com/p/60257706)
 
 回顾策略梯度更新公式：
 $$\theta:=\theta+\alpha\bigtriangledown_\theta J$$

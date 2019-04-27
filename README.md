@@ -28,6 +28,11 @@
 - [深度强化学习的 18 个关键问题](https://www.jiqizhixin.com/articles/2017-12-22-20)
 - [DeepRLHacks](https://github.com/williamFalcon/DeepRLHacks)
 - [median ](https://medium.com/@jonathan_hui/rl-deep-reinforcement-learning-series-833319a95530)
+- [openai 推荐论文](https://spinningup.openai.com/en/latest/spinningup/keypapers.html)
+
+## read material
+
+- [CoRL Open Problems Nov 2017](https://docs.google.com/document/d/1biE0Jmh_5nq-6Giyf2sWZAAQz23uyxhTob2Uz4BjR_w/edit)
 
 ## course
 
@@ -43,6 +48,9 @@
 ## people
 
 - [REZA MAKJOURIAN](https://www.cs.utexas.edu/~reza/)
+- [Pieter Abbeel](https://people.eecs.berkeley.edu/~pabbeel/)
+- [Sergey Levine](https://people.eecs.berkeley.edu/~svlevine/)
+- [Lei TAI 邰磊](https://tailei.ram-lab.com/)
 
 ## open source
 
@@ -51,3 +59,6 @@
 - [MuJoCo](http://www.mujoco.org/)
 - [reinforce_js](https://cs.stanford.edu/people/karpathy/reinforcejs/)
 - [chainerRl](https://github.com/chainer/chainerrl)
+- [rllab](https://github.com/rll/rllab)
+- [stable-baselines](https://github.com/hill-a/stable-baselines)
+- [pytorch rl](https://github.com/jingweiz/pytorch-rl)
