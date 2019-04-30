@@ -56,6 +56,7 @@
 
 - [open_ai](https://openai.com/progress/)
 - [pybullet](https://pybullet.org/wordpress/)
+- [Surreal](https://github.com/SurrealAI/surreal)
 - [MuJoCo](http://www.mujoco.org/)
 - [reinforce_js](https://cs.stanford.edu/people/karpathy/reinforcejs/)
 - [chainerRl](https://github.com/chainer/chainerrl)

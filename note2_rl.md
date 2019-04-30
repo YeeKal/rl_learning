@@ -219,3 +219,10 @@ $$Q(S,A)=Q(S,A)+\alpha(R+\gamma Q(S',A')-Q(S,A))$$
 
 $$Q(S,A)=Q(S,A)+\alpha(R+\gamma \max_{a}Q(S',A)-Q(S,A))$$
 
+## overview
+
+from **2017-Deep reinforcement learning for robotic
+manipulation-the state of the art**
+
+![drl_topology](resources/drl_topology.png)
+
