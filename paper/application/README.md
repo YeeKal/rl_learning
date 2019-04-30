@@ -14,3 +14,5 @@
 - [Neural Task Programming: Learning to Generalize Across Hierarchical Tasks](https://stanfordvl.github.io/ntp/?utm_content=buffer8b1fc&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
     - [code in github](https://github.com/StanfordVL/NTP-vat-release)
 - [oracle net -neural path planning](https://github.com/mayurj747/oraclenet-analysis)
+- [Motion Planning Networks](https://github.com/ahq1993/MPNet)
+- [dex-net: grasping](https://berkeleyautomation.github.io/dex-net/)
