@@ -63,3 +63,4 @@
 - [rllab](https://github.com/rll/rllab)
 - [stable-baselines](https://github.com/hill-a/stable-baselines)
 - [pytorch rl](https://github.com/jingweiz/pytorch-rl)
+- [gym-gazebo](https://github.com/erlerobot/gym-gazebo)
