@@ -16,3 +16,5 @@
 - [oracle net -neural path planning](https://github.com/mayurj747/oraclenet-analysis)
 - [Motion Planning Networks](https://github.com/ahq1993/MPNet)
 - [dex-net: grasping](https://berkeleyautomation.github.io/dex-net/)
+- [learn from demonstration](https://github.com/rrahmati/roboinstruct-1)
+    - [address](http://www.cs.ucf.edu/~rrahmati/manipulationLearning.html)
