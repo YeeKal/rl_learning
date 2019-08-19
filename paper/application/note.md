@@ -33,6 +33,13 @@ The **experiment** contains two types:
 $$s=\begin{bmatrix}q^T& \dot{q}^T & p^T_{goal} & p^T_{ee}\end{bmatrix}\in \mathcal{R}^{42}$$
 - pick & place
 
+## Motion Planning Networks
+
+- 2019
+- vison-based-planning
+- 2d to 7d, including baxter
+- code in github:[Motion Planning Networks](https://github.com/ahq1993/MPNet)
+
 ## Double Deep Q-Network for Trajectory Generation of a Commercial 7DOF Redundant Manipulator
 
 - 2019
